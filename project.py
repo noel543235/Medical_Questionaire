@@ -4,7 +4,9 @@
 #use functions
 
 #Remindor: this program cannot run in Thonny it has to run in the computers Terminal
-#make sure to have python 3.9.7 downloaded to the terminal 
+#make sure to have python 3.9.7 downloaded to the terminal
+#also sure to have the three items installed
+#numpy, matploblib, and pillow
 
 #insert the installed functions from the terminal so Pictures can be used later on in the code
 #make sure to have all of these installed or this program cannot run 
@@ -144,228 +146,426 @@ def image_open(filepath):
     plt.close()
     
 
-    
+#Create the function for the first part of the program    
 def mental_survey():
+    
+    #find an image and make sure to put the exact file name in the open statement
     #https://delamohospital.com/squashing-mental-illness-misconceptions
     image_open('Mental_health_intro.jpg')
+    
+    #get the amount of questions they want
     question_amount = int(amount_questions())
     amount = display_ratings_scale()
+    
+    #ask the first question this question should always be there
     question1 = input_validator("How was your mood today?: ")
+    
+    #open the file so the user can input their answers
     file = open('Survey','a')
     file.write(" ")
+    
+    #make a label so they know which section their answers are from
     file.write("Mental Health Survey")
     file.write(" ")
     file.write(question1)
     file.close()
+    
+    #if the question_amount is more than one use if and elif statements to go through the questions each time
     if question_amount > 1:
+        
+        #ask the second question
         question2 = input_validator("How did you sleep last night?: ")
+        
+        #open the file again so they can add a second input
         file = open('Survey','a')
         file.write(question2)
         file.close()
+        
     if question_amount > 2:
+        
+        #ask question three
         question3 = input_validator("How was your stress level today?: ")
+        
+        #open the file so the user can add their thrird input
         file = open('Survey','a')
         file.write(question3)
         file.close()
+        
     if question_amount > 3:
+        
+        #ask the fourth question
         question4 = input_validator("Did you accomplish what you wanted to do today?: ")
+        
+        #open the file so the users answer is saved into the file
         file = open('Survey','a')
         file.write(question4)
         file.close()
     if question_amount > 4:
+        
+        #add in question number five 
         question5 = input_validator("Do you think you ate enough today?: ")
+        
+        #open the file for the fifth input
         file = open('Survey','a')
         file.write(question5)
         file.close()
+        
+    #get the users thoughts of it by going to the function above
     review_questionair_questions()
+    
+    #open the file so the computer displays what they have addded so far
     print(open('Survey').read())
 
-    
+
+#Have the function for the second part of this questionaire 
 def Physical_survey():
+    
+    #add in the second picture and put the right name in
     #https://www.quora.com/What-is-Physical-Health
     image_open('Physical_intro.jpg')
+    
+    #get the amount of questions
     question_amount = int(amount_questions())
     amount = display_ratings_scale()
+    
+    #get the first question and this should be asked every time they choose this section
     question1 = input_validator("How are you feeling?: ")
+    
+    #open the file and addd the first question in the file
     file = open('Survey','a')
     file.write(" ")
+    
+    #add a header for this section so they know what those answers were for
     file.write("Physical Health Survey")
     file.write(" ")
     file.write(question1)
     file.close()
+    
+    #add in an if and elif statement that runs depending on what the user enters
     if question_amount > 1:
+        
+        #get the second question from the user
         question2 = input_validator("How often do you go to the docter?: ")
+        
+        #open the file and add in the second question answer
         file = open('Survey','a')
         file.write(question2)
         file.close()
+        
     if question_amount > 2:
+        
+        #add in the third question
         question3 = input_validator("Are you currently sick?: ")
+        
+        #input the users answers into the file
         file = open('Survey','a')
         file.write(question3)
         file.close()
+        
     if question_amount > 3:
+        
+        #add in the fourth question of this section
         question4 = input_validator("Do you think your healthy?: ")
+        
+        #open the file and write in the users answer
         file = open('Survey','a')
         file.write(question4)
         file.close()
+        
     if question_amount > 4:
+        
+        #add in the fifth question 
         question5 = input_validator("How are the Hospitals in your area?: ")
+        
+        #open the file and add their answers in
         file = open('Survey','a')
         file.write(question5)
         file.close()
+        
+    #open the review section so they can reflect on their answers
     review_questionair_questions()
+    
+    #print the file so they can see their answers
     print(open('Survey').read())
 
 def Joint_survey():
+    
+    #print the header for the joint survey
     print("+++++ Joint Health ++++++")
+    
+    #get the amount of questions
     question_amount = int(amount_questions())
     amount = display_ratings_scale()
+    
+    #ask the first 
     question1 = input_validator("Do you have pain in your joints?: ")
+    
+    #enter their answer in the file
     file = open('Survey','a')
     file.write(" ")
+    
+    #label the section so the user knows what they put as their answers
     file.write("Joint Survey")
     file.write(" ")
     file.write(question1)
     file.close()
+    
+    #make if and elif statements that run based off of the users choice of how many questions they want
     if question_amount > 1:
+        
+        #enter the second question
         question2 = input_validator("Do you have trouble walking?: ")
+        
+        #put their answers in the file
         file = open('Survey','a')
         file.write(question2)
         file.close()
+        
     if question_amount > 2:
+        
+        #ask the third question
         question3 = input_validator("Do you do any Joint excerisizes?: ")
+        
+        #put it in the file
         file = open('Survey','a')
         file.write(question3)
         file.close()
+        
     if question_amount > 3:
+        
+        #ask the fourth question 
         question4 = input_validator("Do you have a hard time holding items?: ")
+        
+        #enter their answer into the file
         file = open('Survey','a')
         file.write(question4)
         file.close()
+        
     if question_amount > 4:
         question5 = input_validator("Have you had any trouble stretching any joints?: ")
         file = open('Survey','a')
         file.write(question5)
         file.close()
+        
+    #get their input on what they thought about the survey
     review_questionair_questions()
+    
+    #print the file so they can see what they put
     print(open('Survey').read())
     
+#create the function for the excersize portion of the questionaire     
 def Excersize_survey():
+    
+    #enter the image that introduces the topic
     #https://cdn4.vectorstock.com/i/1000x1000/33/83/design-woman-fitness-exercise-logo-gymnastics-vector-26203383.jpg
     image_open('Excersize_intro.jpg')
+    
+    #get the amount of questions they want
     question_amount = int(amount_questions())
     amount = display_ratings_scale()
+    
+    #ask the first question 
     question1 = input_validator("On a scale of 1-5 how much do you excersize per week?: ")
+    
+    #put the answer in the file
     file = open('Survey','a')
     file.write(" ")
+    
+    # label it so they know what they answered for it
     file.write("Excersize Survey")
     file.write(" ")
     file.write(question1)
     file.close()
+    
+    #ask the questions after depending on what they chose
     if question_amount > 1:
+        
+        #ask the second question and enter it into the file
         question2 = input_validator("How much of aschedule do you have when you work out?: ")
         file = open('Survey','a')
         file.write(question2)
         file.close()
+        
     if question_amount > 2:
+        
+        #ask the third question and enter it into the file
         question3 = input_validator("Do you play sports?: ")
         file = open('Survey','a')
         file.write(question3)
         file.close()
     if question_amount > 3:
+        
+        #ask the fourth question and enter it into the file
         question4 = input_validator("How physically active are you?: ")
         file = open('Survey','a')
         file.write(question4)
         file.close()
     if question_amount > 4:
+        
+        #ask the fifth question and enter it into the file
         question5 = input_validator("How much do you go to a gym?: ")
         file = open('Survey','a')
         file.write(question5)
         file.close()
+        
+    #get the users input on what they thought of their answers
     review_questionair_questions()
     
+    #print the file so they know what they chose
     print(open('Survey').read())
     
-
+#make the function for the multiple choice quiz
 def Multiple_choice():
+    
+    #introduce the section
     print("****** Multiple Choice******")
+    
+    #create the variable for correct so it counts how many they got right 
     correct = 0
+    
+    #ask how many questions they would like
     question_amount = int(amount_questions())
+    
+    # question 1
     print("When someone sprains their ankle which part of the joint gets injured?: ")
+    
+    #print the answer options 
     print("A. Bone               B. Ligaments")
     print("C. Tendons            D. Skin")
+    
+    #make the answer variable so that they can enter their answer
     answer = input("Enter your answer here: ")
+    
+    #make the if statement that determines if they got it right or not
     if answer == "B" or answer == "b":
+        
+        #if they got it right enter a well done image
         #https://media.makeameme.org/created/well-done-7v7e6g.jpg
         image_open('welldone1.jpg')
         print("Correct!")
+        
+        #add to the correct variable
         correct = correct + 1
     else:
         print("Incorrect the correct answer is B")
+        
+        #append the number and their answer to the list
         lst.append("1.")
         lst.append(answer)
+        
+    # if and elif statements that are determined by how many questions the user would like   
     if question_amount > 1:
+        
+        #question 2
         print("Which excersize equiptment will help make your biceps stronger?: ")
+        
+        #the answer options
         print("A. Barbell curl         B. Bicicle")
         print("C. Leg Press            D. Treadmill")
+        
+        #the answer option input 
         answer = input("Enter your answer here: ")
+        
+        #the if statement determining if they got it right or wrong
         if answer == "A" or answer == "a":
+            
+            #if they get it right add in the image and add 1 to the correct variable
             #https://i.pinimg.com/originals/6d/db/c5/6ddbc58b4f26c54cae47652f6f5966a7.jpg
             image_open('welldone2.jpg')
             print("Correct!")
             correct = correct + 1
         else:
             print("Incorrect the correct answer is A")
+            
+            #if they got it wrong append the number and their answer to the list
             lst.append("2.")
             lst.append(answer)
+            
     if question_amount > 2:
+        
+        #question 3
         print("Which of the following is something that causes stress?: ")
+        
+        #print the answer options
         print("A. Exams               B. Fights")
         print("C. School              D. All of the Above")
+        
+        #the input statement for the answer
         answer = input("Enter your answer here: ")
+        
+        #the if statement determining whter they got it right or not
         if answer == "D" or answer == "d":
+            
+            #make the image and add one to the correct variable
             #https://www.memesmonkey.com/images/memesmonkey/9e/9e31d79351b38c2abb06b798ad7c5d00.jpeg
             image_open('welldone3.jpeg')
             print("Correct!")
             correct = correct + 1
         else:
             print("That is only partly Correct the Correct answer is D")
+            
+            #append the number and the users answer
             lst.append("3.")
             lst.append(answer)
     if question_amount > 3:
+        
+        #question four
         print("Which of the following is a good carbohydrate?: ")
+        
+        #print the answer the options
         print("A. Pasta               B. Fries")
         print("C. Apples              D. Bread")
         answer = input("Enter your answer here: ")
+        
+        #the if statement that determines if they got the answer right or wrong
         if answer == "C" or answer == "c":
+            
+            #well done image and add one to the correct variable
             #https://memegenerator.net/img/instances/73278580.jpg
             image_open('welldone4.jpg')
             print("Correct!")
             correct = correct + 1
         else:
             print("Incorrect the correct answer is C")
+            
+            #append the wrong answer if they get it wrong
             lst.append("4.")
             lst.append(answer)
+            
     if question_amount > 4:
+        
+        #question number 5
         print("Which of these excersizes is a cardio excersize?: ")
+        
+        #answer options
         print("A. swimming               B. Planks")
         print("C. weight lifting         D. leg curls")
+        
+        #answer input
         answer = input("Enter your answer here: ")
+        
+        #if statement determining if the answer is right or wrong
         if answer == "A" or answer == "a":
+            
+            #add image and add 1 to the correct variable
             #https://www.google.com/url?sa=i&url=https%3A%2F%2Fsayingimages.com%2Fgood-job-meme%2F&psig=AOvVaw09xoBJPDK-JUg9oQ__yN40&ust=1638931948973000&source=images&cd=vfe&ved=0CAgQjRxqGAoTCMii_8_X0PQCFQAAAAAdAAAAABCDAQ
             image_open('welldone5.jpg')
             print("Correct!")
             correct = correct + 1
         else:
             print("Incorrect the correct answer is A")
+            
+            #append the wrong answer to the list
             lst.append("5.")
             lst.append(answer)
         
-    
+    #complete the main function and show them which ones they got wrong and how many they got right
     print("Hope you had fun with this Quiz!")
     print("You got {} out of {} correct".format(correct,question_amount))
     print("if you got any wrong they will sho up here")
     print(lst)
 
+#call the main function to run everything
 main()
+
 
